@@ -1,0 +1,1 @@
+{"project":"NADR","agent":"A3","mode":"public-evaluation","games":5,"frontend":"GitHub Pages","communityBackend":"Supabase Auth + Postgres RLS","features":["RU/EN","NADR ID","comments","ratings","comment votes","reports","favorites","history","local game saves","lazy game launch","sandboxed iframe","NADR SDK"],"canonicalBuild":"NADR-v1(A3)"}

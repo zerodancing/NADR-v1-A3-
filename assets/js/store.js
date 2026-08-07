@@ -1,4 +1,6 @@
-const FAVORITES='nadr.favorites.v2', HISTORY='nadr.history.v2', NICK='nadr.nickname.v1', SAVE_PREFIX='nadr.save.v1.';
+import { AGENT_ID } from './evaluation.js';
+const NS=`nadr.${AGENT_ID.toLowerCase()}`;
+const FAVORITES=`${NS}.favorites.v2`, HISTORY=`${NS}.history.v2`, NICK=`${NS}.nickname.v1`, SAVE_PREFIX=`${NS}.save.v1.`;
 function read(key,fallback){try{const value=JSON.parse(localStorage.getItem(key));return value??fallback}catch{return fallback}}
 function write(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch{return false}}
 export function getFavorites(){return read(FAVORITES,[]).filter(value=>typeof value==='string').slice(0,500)}

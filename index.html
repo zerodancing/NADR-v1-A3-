@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="theme-color" content="#08090d"/>
+  <meta name="color-scheme" content="dark"/>
+  <meta name="description" content="NADR — браузерные игры нового поколения: быстрый запуск, честная витрина, умный каталог."/>
+  <title>NADR — игры нового поколения</title>
+  <link rel="icon" href="/NADR-v1-A3-/assets/logo.svg" type="image/svg+xml"/>
+  <link rel="stylesheet" href="/NADR-v1-A3-/assets/css/site.css"/>
+  <script type="module" src="/NADR-v1-A3-/assets/js/pages/home.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">К содержимому</a>
+  <div id="siteHeader"></div>
+  <main id="main"><aside class="evaluation-banner shell"><strong>A3 / PUBLIC EVALUATION</strong><span>Публичная конкурсная сборка: дизайн, 5 игр, NADR ID, комментарии и оценки работают через общий backend.</span></aside>
+    <section class="hero" id="hero" aria-label="Игра дня"><div class="page-loading"><span></span></div></section>
+    <section class="category-strip shell" aria-label="Категории">
+      <div class="category-strip__head"><strong data-i18n="home.browse"></strong><a href="/NADR-v1-A3-/games/" data-i18n="common.allGames"></a></div>
+      <div class="category-pills" id="categoryPills"></div>
+    </section>
+    <section class="content-section shell" id="continueSection" hidden>
+      <div class="section-heading"><div><span class="eyebrow" data-i18n="home.continueEyebrow"></span><h2 data-i18n="home.continue"></h2></div><a href="/NADR-v1-A3-/games/?sort=recent" data-i18n="common.allGames"></a></div>
+      <div class="game-rail" id="continueRail"></div>
+    </section>
+    <section class="content-section shell">
+      <div class="section-heading section-heading--with-copy"><div><span class="eyebrow" data-i18n="home.editorEyebrow"></span><h2 data-i18n="home.editor"></h2></div><p data-i18n="home.editorText"></p></div>
+      <div class="editor-grid" id="editorialGrid"><div class="page-loading"><span></span></div></div>
+    </section>
+    <section class="content-section shell mood-section">
+      <div class="section-heading"><div><span class="eyebrow" data-i18n="home.moodsEyebrow"></span><h2 data-i18n="home.moods"></h2></div></div>
+      <div class="mood-grid" id="moodGrid"></div>
+    </section>
+    <section class="platform-promise shell">
+      <div><span class="eyebrow" data-i18n="home.promiseEyebrow"></span><h2 data-i18n="home.promise"></h2><p data-i18n="home.promiseText"></p></div>
+      <aside><div><strong>1 click</strong><span data-i18n="home.proofLaunch"></span></div><div><strong>0</strong><span data-i18n="home.proofInstall"></span></div><div><strong>RU / EN</strong><span data-i18n="home.proofLocale"></span></div></aside>
+    </section>
+  </main>
+  <div id="siteFooter"></div><div id="searchDialogHost"></div><div id="toastHost"></div>
+<div class="nadr-agent-badge" aria-label="Версия агента A3">A3</div></body>
+</html>

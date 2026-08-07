@@ -1,0 +1,10 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.102.0/+esm';
+export const supabase=createClient('https://nepndsagokmhankmbfgc.supabase.co','sb_publishable_cEUSdgYP4bzn3sDW_WmoOA_OGgKb3M3',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const PENDING='nadr.pending.nickname';
+export async function currentUser(){const {data}=await supabase.auth.getUser();return data.user||null}
+export async function currentProfile(){const user=await currentUser();if(!user)return null;const {data}=await supabase.from('profiles').select('id,nickname').eq('id',user.id).maybeSingle();return data||null}
+export async function ensureProfile(nickname){const user=await currentUser();if(!user)throw new Error('auth_required');const {data:existing,error:readError}=await supabase.from('profiles').select('id,nickname').eq('id',user.id).maybeSingle();if(readError)throw readError;const explicit=String(nickname||localStorage.getItem(PENDING)||'').trim().slice(0,24);if(existing&&!explicit)return existing;let nick=explicit;if(nick.length<2)nick=`Игрок-${user.id.replaceAll('-','').slice(0,6)}`;const {data,error}=await supabase.from('profiles').upsert({id:user.id,nickname:nick},{onConflict:'id'}).select('id,nickname').single();if(error)throw error;localStorage.removeItem(PENDING);return data}
+export async function signIn(email,password){const {data,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;await ensureProfile();return data}
+export async function signUp(email,password,nickname){localStorage.setItem(PENDING,String(nickname||'Игрок').trim().slice(0,24));const {data,error}=await supabase.auth.signUp({email,password});if(error)throw error;if(data.session)await ensureProfile(nickname);return data}
+export async function signOut(){await supabase.auth.signOut()}
+export function onAuthChange(cb){return supabase.auth.onAuthStateChange(async(event,session)=>{if(session?.user){try{await ensureProfile()}catch{}}cb(event,session)})}
